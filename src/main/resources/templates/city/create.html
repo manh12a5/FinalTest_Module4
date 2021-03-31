@@ -54,15 +54,15 @@
     </div>
     <div class="mb-3">
         <label class="form-label">Area</label>
-        <input type="text" th:field="*{area}" class="form-control" placeholder="Area">
+        <input type="number" min="1" th:field="*{area}" class="form-control">
     </div>
     <div class="mb-3">
         <label class="form-label">Population</label>
-        <input type="text" th:field="*{population}" class="form-control" placeholder="Population">
+        <input type="number" min="1" th:field="*{population}" class="form-control">
     </div>
     <div class="mb-3">
         <label class="form-label">GPA</label>
-        <input type="text" th:field="*{GPA}" class="form-control" placeholder="GPA">
+        <input type="number" min="1" th:field="*{GPA}" class="form-control">
     </div>
     <div class="mb-3">
         <label class="form-label">Description</label>

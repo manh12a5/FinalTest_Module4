@@ -11,6 +11,7 @@ public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotNull
     private String name;
     @ManyToOne
     private Nation nation;
@@ -19,20 +20,20 @@ public class City {
     @Min(1)
     private int population;
     @Min(1)
-    private Long GPA;
+    private Long GDP;
     @NotNull
     private String description;
 
     public City() {
     }
 
-    public City(Long id, String name, Nation nation, @Min(1) double area, @Min(1) int population, @Min(1) Long GPA, String description) {
+    public City(Long id, String name, Nation nation, @Min(1) double area, @Min(1) int population, @Min(1) Long GDP, String description) {
         this.id = id;
         this.name = name;
         this.nation = nation;
         this.area = area;
         this.population = population;
-        this.GPA = GPA;
+        this.GDP = GDP;
         this.description = description;
     }
 
@@ -76,12 +77,12 @@ public class City {
         this.population = population;
     }
 
-    public Long getGPA() {
-        return GPA;
+    public Long getGDP() {
+        return GDP;
     }
 
-    public void setGPA(Long GPA) {
-        this.GPA = GPA;
+    public void setGDP(Long GDP) {
+        this.GDP = GDP;
     }
 
     public String getDescription() {
