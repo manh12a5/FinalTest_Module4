@@ -48,7 +48,7 @@
         <th>Nation</th>
         <th>Area</th>
         <th>Population</th>
-        <th>GPA</th>
+        <th>GDP</th>
         <th>Description</th>
         <th colspan="3"></th>
     </tr>
@@ -57,7 +57,7 @@
         <td th:text="${city.nation.name}"></td>
         <td th:text="${city.area}"></td>
         <td th:text="${city.population}"></td>
-        <td th:text="${city.GPA}"></td>
+        <td th:text="${city.GDP}"></td>
         <td th:text="${city.description}"></td>
         <td>
             <a th:href="@{/city/edit/{id}(id=${city.id})}">
