@@ -12,7 +12,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/products">City</a>
+        <a class="navbar-brand" href="/city">City</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -43,6 +43,7 @@
     <div class="mb-3">
         <label class="form-label">Name</label>
         <input type="text" th:field="*{name}" class="form-control" placeholder="Name">
+        <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
     </div>
     <div>
         <label>Nation</label>

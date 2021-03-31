@@ -4,6 +4,7 @@ import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class City {
@@ -11,7 +12,7 @@ public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotNull
+    @NotEmpty
     private String name;
     @ManyToOne
     private Nation nation;
@@ -21,7 +22,7 @@ public class City {
     private int population;
     @Min(1)
     private Long GDP;
-    @NotNull
+    @NotEmpty
     private String description;
 
     public City() {

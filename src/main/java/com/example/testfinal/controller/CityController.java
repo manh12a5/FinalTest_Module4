@@ -9,6 +9,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -45,14 +47,17 @@ public class CityController {
     }
 
     @GetMapping("/create")
-    public ModelAndView showCreate(){
+    public ModelAndView showCreate() {
         ModelAndView modelAndView= new ModelAndView("city/create");
         modelAndView.addObject("city", new City());
         return modelAndView;
     }
 
     @PostMapping("/create")
-    public ModelAndView createCity(@ModelAttribute City city) {
+    public ModelAndView createCity(@Validated @ModelAttribute City city, BindingResult bindingResult) {
+        if (bindingResult.hasFieldErrors()) {
+            return new ModelAndView("city/create");
+        }
         ModelAndView modelAndView = new ModelAndView("city/create");
         cityService.save(city);
         modelAndView.addObject("city", city);
@@ -68,7 +73,10 @@ public class CityController {
     }
 
     @PostMapping("/edit/{id}")
-    private ModelAndView editCity(@ModelAttribute City city) {
+    private ModelAndView editCity(@Validated @ModelAttribute City city, BindingResult bindingResult) {
+        if (bindingResult.hasFieldErrors()) {
+            return new ModelAndView("city/edit");
+        }
         ModelAndView modelAndView = new ModelAndView("city/edit");
         cityService.save(city);
         modelAndView.addObject("city", city);
@@ -83,12 +91,12 @@ public class CityController {
         return modelAndView;
     }
 
-//    @PostMapping("/search")
-//    public ModelAndView showSearchNameProduct(@RequestParam String name, @PageableDefault(size = 5) Pageable pageable) {
-//        ModelAndView modelAndView = new ModelAndView("city/list");
-//        Page<City> cityPage = cityService.findCitiesByName(name, pageable);
-//        modelAndView.addObject("city", cityPage);
-//        return modelAndView;
-//    }
+    @PostMapping("/search")
+    public ModelAndView showSearchNameProduct(@RequestParam String name, @PageableDefault(size = 5) Pageable pageable) {
+        ModelAndView modelAndView = new ModelAndView("city/list");
+        Page<City> cityPage = cityService.findCitiesByName(name, pageable);
+        modelAndView.addObject("city", cityPage);
+        return modelAndView;
+    }
 
 }
